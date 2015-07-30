@@ -1,13 +1,8 @@
 ---
-title: API Reference
-
-language_tabs:
-  - shell
-  - ruby
-  - python
+YourGuy: API Reference
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://yourguy.in'>Contact YourGuy for API Key</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -18,151 +13,117 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the YourGuy API! You can use our API to access YourGuy API endpoints, which can get information on all action on <ul>
+<li>orders </li>
+<li>customers </li>
+<li>products in our database.</li>
+</ul>
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
-> To authorize, use this code:
+YourGuy uses <b>Token based Authentication</b> system to allow access to the API.
 
-```ruby
-require 'kittn'
+Please include your API key in the HTTP HEADER of all your API requests in the following way:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+`Authorization: Token <apikey>`
 
-```python
-import kittn
+### Base URL
+http:yourguytestserver.herokuapp.com/
 
-api = kittn.authorize('meowmeowmeow')
-```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+# Orders
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## Get All orders
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+This endpoint retrieves all orders for a date specified.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET /api/v1/order/?date=<respective-date>`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+date | today | date format '2015-07-22T12:16:06Z'
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
+## Get a Specific Order
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+This endpoint retrieves a specific Order.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET /api/v1/order/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The Order ID to retrieve
 
+## Place an Order
+
+This endpoint retrieves a specific Order.
+
+### HTTP Request
+
+`POST /api/v1/order/0/place_order/`
+
+### POST Parameters
+<ul>
+  <li>"pickup_datetime":"2015-07-22T12:16:06Z"</li>
+  <li>"delivery_datetime":"2015-07-22T12:16:06Z"</li>
+  <li>"customer_name":"shirish"</li>
+  <li>"customer_phone_number":"9959026007"</li>
+  <li>pickup_address:
+    <ul>
+      <li>"flat_number":"121"</li>
+      <li>"building":"trade avenue"</li>
+      <li>"street":"suren road"</li>
+      <li>"landmark":"121"</li>
+      <li>"pincode":"trade avenue"</li>
+    </ul>
+  </li>
+  <li>delivery_address:
+    <ul>
+      <li>"flat_number":"121"</li>
+      <li>"building":"trade avenue"</li>
+      <li>"street":"suren road"</li>
+      <li>"landmark":"121"</li>
+      <li>"pincode":"trade avenue"</li>
+    </ul>
+  </li>
+  <li>order_items:
+    <ul>
+      <li>product_id:1</li>
+      <li>quantity:1</li>
+    </ul>
+  </li>  
+</ul>
+
+# Customers
+
+## Get All customers
+
+This endpoint retrieves all customers.
+
+### HTTP Request
+
+`GET /api/v1/consumer/`
+
+
+## Get a Specific customer details
+
+This endpoint retrieves a specific Order.
+
+### HTTP Request
+
+`GET /api/v1/consumer/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The Consumer ID to retrieve
