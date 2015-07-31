@@ -101,6 +101,13 @@ This endpoint retrieves a specific Order.
       <li>quantity:1</li>
     </ul>
   </li>  
+  <li>recurring: [Optional]
+    <ul>
+      <li>start_date:"2015-07-22T12:16:06Z"</li>
+      <li>end_date:"2015-07-22T12:16:06Z"</li>
+      <li>by_days:["MO","TU"]</li>
+    </ul>
+  </li>  
 </ul>
 
 # Customers
