@@ -152,7 +152,7 @@ This endpoint retrieves all products.
 
 ### HTTP Request
 
-`POST /api/v1/order/product/`
+`POST /api/v1/product/`
 
 ### POST Parameters
 
