@@ -134,3 +134,32 @@ This endpoint retrieves a specific Order.
 Parameter | Description
 --------- | -----------
 ID | The Consumer ID to retrieve
+
+
+
+# Products
+
+## Get All products
+
+This endpoint retrieves all products.
+
+### HTTP Request
+
+`GET /api/v1/product/`
+
+
+## Add product
+
+### HTTP Request
+
+`POST /api/v1/order/product/`
+
+### POST Parameters
+
+<ul>
+  <li>"name": Cake</li>
+  <li>"description": Custom designed cakes</li>
+  <li>"cost": 200 </li>
+  <li>"vendor":vendor_id</li>
+  <li>"category":category_id [Optional]</li>
+</ul>
