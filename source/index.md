@@ -160,6 +160,4 @@ This endpoint retrieves all products.
   <li>"name": Cake</li>
   <li>"description": Custom designed cakes</li>
   <li>"cost": 200 </li>
-  <li>"vendor":vendor_id</li>
-  <li>"category":category_id [Optional]</li>
 </ul>
