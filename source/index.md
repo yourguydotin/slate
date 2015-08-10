@@ -110,6 +110,20 @@ This endpoint retrieves a specific Order.
   </li>  
 </ul>
 
+### Order statuses
+<ul>
+  <li>ORDER_PLACED</li>
+  <li>QUEUED</li>
+  <li>REJECTED</li>
+  <li>OUTFORPICKUP</li>
+  <li>INTRANSIT</li>
+  <li>OUTFORDELIVERY</li>
+  <li>DELIVERED</li>
+  <li>ATTEMPTED</li>
+  <li>NOT_DELIVERED</li>
+  <li>CANCELLED</li>
+</ul>
+
 # Customers
 
 ## Get All customers
