@@ -110,6 +110,17 @@ This endpoint retrieves a specific Order.
   </li>  
 </ul>
 
+
+## Delete Order
+
+### HTTP Request
+
+`DELETE /api/v1/order/<order-id>/`
+
+###Caution: Calling the above API will permanently deletes the order from our systems.
+
+
+
 ### Order statuses
 <ul>
   <li>ORDER_PLACED</li>
@@ -175,3 +186,12 @@ This endpoint retrieves all products.
   <li>"description": Custom designed cakes</li>
   <li>"cost": 200 </li>
 </ul>
+
+
+## Delete Product
+
+### HTTP Request
+
+`DELETE /api/v1/product/<product-id>/`
+
+###Caution: Calling the above API will permanently deletes the product from our systems.
