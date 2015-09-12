@@ -77,6 +77,7 @@ This endpoint retrieves a specific Order.
   <li>"delivery_datetime":"2015-07-22T12:16:06Z"</li>
   <li>"customer_name":"shirish"</li>
   <li>"customer_phone_number":"9959026007"</li>
+  <li>"is_reverse_pickup":false</li>
   <li>pickup_address:
     <ul>
       <li>"flat_number":"121"</li>
@@ -95,11 +96,7 @@ This endpoint retrieves a specific Order.
       <li>"pincode":"trade avenue"</li>
     </ul>
   </li>
-  <li>order_items:
-    <ul>
-      <li>product_id:1</li>
-      <li>quantity:1</li>
-    </ul>
+  <li>order_items:[{product_id: 1 , quantity: 1}]
   </li>  
   <li>recurring: [Optional]
     <ul>
