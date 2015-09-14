@@ -78,6 +78,10 @@ This endpoint retrieves a specific Order.
   <li>"customer_name":"shirish"</li>
   <li>"customer_phone_number":"9959026007"</li>
   <li>"is_reverse_pickup":false</li>
+  <li>"notes":"sample notes" [Optional]</li>
+  <li>"cod_amount":"220" [Optional]</li>
+  <li>"total_cost":"220" [Optional]</li>
+  <li>"vendor_order_id":"HS12453" [Optional]</li>
   <li>pickup_address:
     <ul>
       <li>"flat_number":"121"</li>
