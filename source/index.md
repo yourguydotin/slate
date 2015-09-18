@@ -112,14 +112,16 @@ This endpoint retrieves a specific Order.
 </ul>
 
 
-## Delete Order
+## Cancel Order
 
 ### HTTP Request
 
-`DELETE /api/v1/order/<order-id>/`
+`POST /api/v1/order/<order-id>/cancel/`
 
-###Caution: Calling the above API will permanently deletes the order from our systems.
-
+### POST Parameters
+<ul>
+  <li>"date":"2015-07-22T12:16:06Z"</li>
+</ul>  
 
 
 ### Order statuses
