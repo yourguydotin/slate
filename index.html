@@ -153,13 +153,17 @@
   </li>  
 </ul>
 
-<h2 id="delete-order">Delete Order</h2>
+<h2 id="cancel-order">Cancel Order</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/order/&lt;order-id&gt;/</code></p>
+<p><code class="prettyprint">POST /api/v1/order/&lt;order-id&gt;/cancel/</code></p>
 
-<h3 id="caution-calling-the-above-api-will-permanently-deletes-the-order-from-our-systems">Caution: Calling the above API will permanently deletes the order from our systems.</h3>
+<h3 id="post-parameters">POST Parameters</h3>
+
+<ul>
+  <li>&ldquo;date&rdquo;:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
+</ul>  
 
 <h3 id="order-statuses">Order statuses</h3>
 
