@@ -2,7 +2,7 @@
 YourGuy: API Reference
 
 toc_footers:
-  - <a href='mailto::tech@yourguy.in'>Contact YourGuy for API Key</a>
+  - <a href='mailto:tech@yourguy.in?subject=Request for API KEY'>Contact YourGuy for API Key</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
