@@ -64,7 +64,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/order/?date=&lt;respective-date&gt;</code></p>
+<p><code class="prettyprint">GET /api/v2/order/?date=&lt;respective-date&gt;&amp;page=1</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -80,6 +80,11 @@
 <td>today</td>
 <td>date format &lsquo;2015-07-22T12:16:06Z&rsquo;</td>
 </tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>page number from the total pages returned in first page response</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-a-specific-order">Get a Specific Order</h2>
@@ -88,18 +93,29 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/order/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET /api/v2/order/&lt;ID&gt;</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<p>If its a recurring order:</p>
+
+<p><code class="prettyprint">GET /api/v2/order/&lt;ID&gt;/?date=&lt;respective-date&gt;</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>date</td>
+<td>today</td>
+<td>date format &#39;2015-07-22T12:16:06Z&rsquo;</td>
+</tr>
+<tr>
 <td>ID</td>
+<td>None</td>
 <td>The Order ID to retrieve</td>
 </tr>
 </tbody></table>
@@ -110,13 +126,12 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/order/0/place_order/</code></p>
+<p><code class="prettyprint">POST /api/v2/order/0/place_order/</code></p>
 
 <h3 id="post-parameters">POST Parameters</h3>
 
 <ul>
   <li>&ldquo;pickup_datetime&rdquo;:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
-  <li>&ldquo;delivery_datetime&rdquo;:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
   <li>&ldquo;customer_name&rdquo;:&ldquo;shirish&rdquo;</li>
   <li>&ldquo;customer_phone_number&rdquo;:&ldquo;9959026007&rdquo;</li>
   <li>&ldquo;is_reverse_pickup&rdquo;:false</li>
@@ -124,31 +139,27 @@
   <li>&ldquo;cod_amount&rdquo;:&ldquo;220&rdquo; [Optional]</li>
   <li>&ldquo;total_cost&rdquo;:&ldquo;220&rdquo; [Optional]</li>
   <li>&ldquo;vendor_order_id&rdquo;:&ldquo;HS12453&rdquo; [Optional]</li>
+  <li>order_items:[{product_id: 1, quantity: 1}]</li> 
   <li>pickup_address:
     <ul>
-      <li>&ldquo;flat_number&rdquo;:&ldquo;121&rdquo;</li>
-      <li>&ldquo;building&rdquo;:&ldquo;trade avenue&rdquo;</li>
-      <li>&ldquo;street&rdquo;:&ldquo;suren road&rdquo;</li>
-      <li>&ldquo;landmark&rdquo;:&ldquo;121&rdquo;</li>
-      <li>&ldquo;pincode&rdquo;:&ldquo;trade avenue&rdquo;</li>
+      <li>&ldquo;full_address&rdquo;:&ldquo;604, Trade avenue, Suren road, Andheri East&rdquo;</li>
+      <li>&ldquo;landmark&rdquo;:&ldquo;WEH High Metro station&rdquo; [Optional]</li> 
+      <li>&ldquo;pincode&rdquo;:&ldquo;400099&rdquo;</li>
     </ul>
   </li>
   <li>delivery_address:
     <ul>
-      <li>&ldquo;flat_number&rdquo;:&ldquo;121&rdquo;</li>
-      <li>&ldquo;building&rdquo;:&ldquo;trade avenue&rdquo;</li>
-      <li>&ldquo;street&rdquo;:&ldquo;suren road&rdquo;</li>
-      <li>&ldquo;landmark&rdquo;:&ldquo;121&rdquo;</li>
-      <li>&ldquo;pincode&rdquo;:&ldquo;trade avenue&rdquo;</li>
+      <li>&ldquo;full_address&rdquo;:&ldquo;604, Trade avenue, Suren road, Andheri East&rdquo;</li>
+      <li>&ldquo;landmark&rdquo;:&ldquo;WEH High Metro station&rdquo; [Optional]</li> 
+      <li>&ldquo;pincode&rdquo;:&ldquo;400099&rdquo;</li>
     </ul>
   </li>
-  <li>order_items:[{product_id: 1 , quantity: 1}]
-  </li>  
   <li>recurring: [Optional]
     <ul>
       <li>start_date:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
       <li>end_date:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
       <li>by_days:[&ldquo;MO&rdquo;,&ldquo;TU&rdquo;]</li>
+      <li>additional_dates:[&ldquo;2015-07-22T12:16:06Z&rdquo;,&ldquo;2015-07-22T12:16:06Z&rdquo;]</li>
     </ul>
   </li>  
 </ul>
@@ -157,13 +168,14 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/order/&lt;order-id&gt;/cancel/</code></p>
+<p><code class="prettyprint">POST /api/v2/order/&lt;order-id&gt;/cancel/</code></p>
 
 <h3 id="post-parameters">POST Parameters</h3>
 
+<p>For Recurring orders, please pass date parameter in post body
 <ul>
-  <li>&ldquo;date&rdquo;:&ldquo;2015-07-22T12:16:06Z&rdquo;</li>
-</ul>  
+  <li>&ldquo;date&rdquo;:&ldquo;2015-07-22T12:16:06Z&rdquo; [Optional]</li>
+</ul>  </p>
 
 <h3 id="order-statuses">Order statuses</h3>
 
@@ -188,7 +200,21 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/consumer/</code></p>
+<p><code class="prettyprint">GET /api/v2/consumer/?page=1</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>page number from the total pages returned in first page response</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-a-specific-customer-details">Get a Specific customer details</h2>
 
@@ -196,7 +222,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/consumer/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET /api/v2/consumer/&lt;ID&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -220,13 +246,13 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/product/</code></p>
+<p><code class="prettyprint">GET /api/v2/product/</code></p>
 
 <h2 id="add-product">Add product</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/product/</code></p>
+<p><code class="prettyprint">POST /api/v2/product/</code></p>
 
 <h3 id="post-parameters">POST Parameters</h3>
 
@@ -235,14 +261,6 @@
   <li>&ldquo;description&rdquo;: Custom designed cakes</li>
   <li>&ldquo;cost&rdquo;: 200 </li>
 </ul>
-
-<h2 id="delete-product">Delete Product</h2>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">DELETE /api/v1/product/&lt;product-id&gt;/</code></p>
-
-<h3 id="caution-calling-the-above-api-will-permanently-deletes-the-product-from-our-systems">Caution: Calling the above API will permanently deletes the product from our systems.</h3>
 
           <h1 id="errors">Errors</h1>
 
