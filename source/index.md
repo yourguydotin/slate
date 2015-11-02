@@ -108,7 +108,7 @@ This endpoint retrieves a specific Order.
       <li>start_date:"2015-07-22T12:16:06Z"</li>
       <li>end_date:"2015-07-22T12:16:06Z"</li>
       <li>by_day:["MO","TU"]</li>
-      <li>additional_dates:["2015-07-22T12:16:06Z","2015-07-22T12:16:06Z"]</li>
+      <li>additional_dates:["2015-07-22T12:16:06Z","2015-07-22T12:16:06Z"] [Optional]</li>
     </ul>
   </li>  
 </ul>
